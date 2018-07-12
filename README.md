@@ -7,6 +7,8 @@ Extends the `CoordinateChannel` concatenation from only 2D rank (images) to 1D (
 
 Import `coord.py` and call it *before* any convolution layer in order to attach the coordinate channels to the input.
 
+There are **3 different versions of CoordinateChannel** - 1D, 2D and 3D for each of `Conv1D`, `Conv2D` and `Conv3D`. 
+
 ```python
 from coord import CoordinateChannel2D
 
