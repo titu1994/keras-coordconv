@@ -1,4 +1,5 @@
 import os
+import sys
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -7,6 +8,7 @@ from keras.models import Model
 from keras.callbacks import ModelCheckpoint
 from keras.optimizers import Adam
 
+sys.path.append('..')
 from coord import CoordinateChannel2D
 
 
