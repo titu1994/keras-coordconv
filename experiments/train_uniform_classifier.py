@@ -52,12 +52,12 @@ print('Test set : ', test_set.shape, test_set.max(), test_set.min())
 
 # Visualize the datasets
 
-# plt.imshow(np.sum(train_onehot, axis=0)[:, :, 0], cmap='gray')
-# plt.show()
-# plt.imshow(np.sum(test_onehot, axis=0)[:, :, 0], cmap='gray')
-# plt.show()
-# plt.imshow(np.sum(np.concatenate((train_onehot, test_onehot)), axis=0)[:, :, 0], cmap='gray')
-# plt.show()
+plt.imshow(np.sum(train_onehot, axis=0)[:, :, 0], cmap='gray')
+plt.title('Train One-hot dataset')
+plt.show()
+plt.imshow(np.sum(test_onehot, axis=0)[:, :, 0], cmap='gray')
+plt.title('Test One-hot dataset')
+plt.show()
 
 # flatten the datasets
 train_onehot = train_onehot.reshape((-1, 64 * 64))
@@ -87,9 +87,9 @@ checkpoint = ModelCheckpoint('data-uniform/coordconv.h5', monitor='val_acc',
                              verbose=1, save_best_only=True, save_weights_only=True)
 
 # train model
-model.fit(train_set, train_onehot, batch_size=32, epochs=10,
-          verbose=1, callbacks=[checkpoint],
-          validation_data=(test_set, test_onehot))
+# model.fit(train_set, train_onehot, batch_size=32, epochs=10,
+#           verbose=1, callbacks=[checkpoint],
+#           validation_data=(test_set, test_onehot))
 
 # evaluate model
 model.load_weights('data-uniform/coordconv.h5')
@@ -101,6 +101,7 @@ print(np.min(preds), np.max(preds))
 preds = preds.reshape((-1, 64, 64, 1))
 
 plt.imshow(np.sum(preds, axis=0)[:, :, 0], cmap='gray')
+plt.title('Predictions')
 plt.show()
 
 scores = model.evaluate(test_set, test_onehot, batch_size=128, verbose=1)

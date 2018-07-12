@@ -70,4 +70,3 @@ final = np.concatenate([ip, zz_channels, xx_channels, yy_channels], axis=-1)
 
 print("final", final.shape)
 print(final[0])
-

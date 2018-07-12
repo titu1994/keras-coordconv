@@ -3,9 +3,9 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 
 # Can be either `quadrant` or `uniform`
-mode = 'quadrant'
+type = 'quadrant'
 
-assert mode in ['uniform', 'quadrant']
+assert type in ['uniform', 'quadrant']
 
 if not os.path.exists('data-uniform/'):
     os.makedirs('data-uniform/')
@@ -31,7 +31,7 @@ if __name__ == '__main__':
 
         images = sess.run(images)
 
-    if mode == 'uniform':
+    if type == 'uniform':
         # Create the uniform datasets
         indices = np.arange(0, len(onehots), dtype='int32')
         train, test = train_test_split(indices, test_size=0.2, random_state=0)
