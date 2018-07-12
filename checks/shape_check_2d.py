@@ -1,6 +1,6 @@
 import numpy as np
 
-ip_shape = (10, 5, 5, 20)
+ip_shape = (10, 6, 5, 20)
 batch, w, h, c = ip_shape
 ip = np.ones(ip_shape, dtype='float32')
 

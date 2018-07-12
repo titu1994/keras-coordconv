@@ -37,6 +37,9 @@ class _CoordinateChannel(Layer):
         or 5D tensor with shape:
         `(samples, *, channels + 2)`
         if `data_format` is `"channels_last"`.
+
+    # References:
+        - [An Intriguing Failing of Convolutional Neural Networks and the CoordConv Solution](https://arxiv.org/abs/1807.03247)
     """
 
     def __init__(self, rank,
@@ -236,6 +239,9 @@ class CoordinateChannel1D(_CoordinateChannel):
 
     # Output shape
         3D tensor with shape: `(batch_size, steps, input_dim + 2)`
+
+    # References:
+        - [An Intriguing Failing of Convolutional Neural Networks and the CoordConv Solution](https://arxiv.org/abs/1807.03247)
     """
 
     def __init__(self, data_format=None, **kwargs):
@@ -288,6 +294,9 @@ class CoordinateChannel2D(_CoordinateChannel):
 
         If `use_radius` is set, then will have 3 additional filers,
         else only 2 additional filters will be added.
+
+    # References:
+        - [An Intriguing Failing of Convolutional Neural Networks and the CoordConv Solution](https://arxiv.org/abs/1807.03247)
     """
 
     def __init__(self, use_radius=False,
@@ -340,6 +349,9 @@ class CoordinateChannel3D(_CoordinateChannel):
         or 5D tensor with shape:
         `(samples, conv_dim1, conv_dim2, conv_dim3, channels + 2)`
         if `data_format` is `"channels_last"`.
+
+    # References:
+        - [An Intriguing Failing of Convolutional Neural Networks and the CoordConv Solution](https://arxiv.org/abs/1807.03247)
     """
 
     def __init__(self, data_format=None,
