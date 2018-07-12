@@ -40,6 +40,23 @@ The uniform dataset model can be trained and evaluated in less than 25 epochs us
 |:---: | :---: | :-----------: |
 |<img src="https://github.com/titu1994/keras-coordconv/blob/master/images/quadrant-train.png?raw=true" > | <img src="https://github.com/titu1994/keras-coordconv/blob/master/images/quadrant-test.png?raw=true" > | <img src="https://github.com/titu1994/keras-coordconv/blob/master/images/quadrant-preds.png?raw=true" > |
 
+# Checks
+
+To see if the implementation of CoordConv index concatenation is correct, please refer to the numpy implementations in
+the `checks` directory, for the implementation of all 3 versions.
+
+## **Difference from paper**
+This implementation of the coordinate channels creation differs slightly from the original paper.
+
+The major difference is that for 2/3D Convolutions, it may not be the case that the height and width are the same
+for all layers. The original implementation would throw an error due to shape mismatch during the concatenation.
+
+To over come this, the `np.ones()` operation which occurs at the first of every channel is modified and a few
+transpose operations are added to account for this change.
+
+This modification along with some transpose operations allows for height and width to be different and still work.
+
+
 # Requirements
 
 - Keras 2.2.0+
