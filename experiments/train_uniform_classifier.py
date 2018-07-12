@@ -54,12 +54,12 @@ print('Test set : ', test_set.shape, test_set.max(), test_set.min())
 
 # Visualize the datasets
 
-plt.imshow(np.sum(train_onehot, axis=0)[:, :, 0], cmap='gray')
-plt.title('Train One-hot dataset')
-plt.show()
-plt.imshow(np.sum(test_onehot, axis=0)[:, :, 0], cmap='gray')
-plt.title('Test One-hot dataset')
-plt.show()
+# plt.imshow(np.sum(train_onehot, axis=0)[:, :, 0], cmap='gray')
+# plt.title('Train One-hot dataset')
+# plt.show()
+# plt.imshow(np.sum(test_onehot, axis=0)[:, :, 0], cmap='gray')
+# plt.title('Test One-hot dataset')
+# plt.show()
 
 # flatten the datasets
 train_onehot = train_onehot.reshape((-1, 64 * 64))
@@ -79,13 +79,13 @@ x = Flatten()(x)
 x = Softmax(axis=-1)(x)
 
 model = Model(ip, x)
-print(model.summary())
+model.summary()
 
 
 optimizer = Adam(lr=1e-3)
 model.compile(optimizer, 'categorical_crossentropy', metrics=['accuracy'])
 
-checkpoint = ModelCheckpoint('data-uniform/coordconv.h5', monitor='val_acc',
+checkpoint = ModelCheckpoint('data-uniform/coordconv.h5', monitor='val_loss',
                              verbose=1, save_best_only=True, save_weights_only=True)
 
 # train model

@@ -35,12 +35,12 @@ print('Test set : ', test_set.shape, test_set.max(), test_set.min())
 
 # visualize the datasets
 
-plt.imshow(np.sum(train_onehot, axis=0)[:, :, 0], cmap='gray')
-plt.title('Train One-hot dataset')
-plt.show()
-plt.imshow(np.sum(test_onehot, axis=0)[:, :, 0], cmap='gray')
-plt.title('Test One-hot dataset')
-plt.show()
+# plt.imshow(np.sum(train_onehot, axis=0)[:, :, 0], cmap='gray')
+# plt.title('Train One-hot dataset')
+# plt.show()
+# plt.imshow(np.sum(test_onehot, axis=0)[:, :, 0], cmap='gray')
+# plt.title('Test One-hot dataset')
+# plt.show()
 
 # flatten the datasets
 train_onehot = train_onehot.reshape((-1, 64 * 64))
@@ -60,7 +60,7 @@ x = Flatten()(x)
 x = Softmax(axis=-1)(x)
 
 model = Model(ip, x)
-print(model.summary())
+model.summary()
 
 optimizer = Adam(lr=1e-2)
 model.compile(optimizer, 'categorical_crossentropy', metrics=['accuracy'])
@@ -81,7 +81,6 @@ preds = model.predict(test_set)
 print(np.min(preds), np.max(preds))
 
 preds = preds.reshape((-1, 64, 64, 1))
-preds = np.where(preds > 0.4, 1.0, 0.0)
 
 plt.imshow(np.sum(preds, axis=0)[:, :, 0], cmap='gray')
 plt.title('Predictions')

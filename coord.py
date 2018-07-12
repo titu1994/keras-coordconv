@@ -246,8 +246,6 @@ class CoordinateChannel1D(_CoordinateChannel):
             **kwargs
         )
 
-        self.input_spec = InputSpec(ndim=3)
-
     def get_config(self):
         config = super(CoordinateChannel1D, self).get_config()
         config.pop('rank')
@@ -302,8 +300,6 @@ class CoordinateChannel2D(_CoordinateChannel):
             **kwargs
         )
 
-        self.input_spec = InputSpec(ndim=4)
-
     def get_config(self):
         config = super(CoordinateChannel2D, self).get_config()
         config.pop('rank')
@@ -354,8 +350,6 @@ class CoordinateChannel3D(_CoordinateChannel):
             data_format=data_format,
             **kwargs
         )
-
-        self.input_spec = InputSpec(ndim=5)
 
     def get_config(self):
         config = super(CoordinateChannel3D, self).get_config()
