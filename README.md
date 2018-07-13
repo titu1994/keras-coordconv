@@ -36,7 +36,7 @@ The uniform dataset model can be trained and evaluated in less than 10 epochs us
 |<img src="https://github.com/titu1994/keras-coordconv/blob/master/images/uniform-train.png?raw=true" > | <img src="https://github.com/titu1994/keras-coordconv/blob/master/images/uniform-test.png?raw=true" > | <img src="https://github.com/titu1994/keras-coordconv/blob/master/images/uniform-preds.png?raw=true" > |
 
 ## Quadrant Dataset
-The uniform dataset model can be trained and evaluated in less than 25 epochs using `train_quadrant_classifier.py`
+The quadrant dataset model can be trained and evaluated in less than 25 epochs using `train_quadrant_classifier.py`
 
 |Train | Test  |  Predictions  |
 |:---: | :---: | :-----------: |
