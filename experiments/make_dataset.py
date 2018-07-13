@@ -50,8 +50,8 @@ if __name__ == '__main__':
     else:
         # Create the quadrant datasets
         pos = np.where(onehots == 1.0)
-        X = pos[0]
-        Y = pos[1]
+        X = pos[1]
+        Y = pos[2]
 
         train_set = []
         test_set = []
