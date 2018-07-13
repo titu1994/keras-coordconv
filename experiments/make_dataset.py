@@ -20,7 +20,7 @@ if __name__ == '__main__':
     tf.set_random_seed(0)
 
     # From https://arxiv.org/pdf/1807.03247.pdf
-    onehots = np.pad(np.eye(3136).reshape((3136, 56, 56, 1)),
+    onehots = np.pad(np.eye(3136, dtype='float32').reshape((3136, 56, 56, 1)),
                      ((0, 0), (4, 4), (4, 4), (0, 0)), mode="constant")
 
     images = tf.nn.conv2d(onehots, np.ones((9, 9, 1, 1)), [1] * 4, "SAME")
