@@ -68,7 +68,7 @@ class _CoordinateChannel(Layer):
                                     axes={self.axis: input_dim})
         self.built = True
 
-    def call(self, inputs):
+    def call(self, inputs, training=None, mask=None):
         input_shape = K.shape(inputs)
 
         if self.rank == 1:
@@ -81,7 +81,7 @@ class _CoordinateChannel(Layer):
 
             xx_channels = K.cast(xx_range, K.floatx())
             xx_channels = xx_channels / K.cast(dim - 1, K.floatx())
-            xx_channels = xx_channels * 2 - 1.
+            xx_channels = (xx_channels * 2) - 1.
 
             outputs = K.concatenate([inputs, xx_channels], axis=self.axis)
 
@@ -204,7 +204,7 @@ class _CoordinateChannel(Layer):
         if self.use_radius and self.rank == 2:
             channel_count = 3
         else:
-            channel_count = 2
+            channel_count = self.rank
 
         output_shape = list(input_shape)
         output_shape[self.axis] = input_shape[self.axis] + channel_count
