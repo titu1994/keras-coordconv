@@ -55,7 +55,7 @@ class _CoordinateChannel(Layer):
         self.rank = rank
         self.use_radius = use_radius
         self.data_format = K.image_data_format() if data_format is None else data_format
-        self.axis = 1 if self.data_format == 'channels_first' else -1
+        self.axis = -1
 
         self.input_spec = InputSpec(min_ndim=2)
         self.supports_masking = True
