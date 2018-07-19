@@ -55,7 +55,7 @@ class _CoordinateChannel(Layer):
         self.rank = rank
         self.use_radius = use_radius
         self.data_format = K.image_data_format() if data_format is None else data_format
-        self.axis = -1
+        self.axis = 1 if K.image_data_format() == 'channels_first' else -1
 
         self.input_spec = InputSpec(min_ndim=2)
         self.supports_masking = True
@@ -83,7 +83,7 @@ class _CoordinateChannel(Layer):
             xx_channels = xx_channels / K.cast(dim - 1, K.floatx())
             xx_channels = (xx_channels * 2) - 1.
 
-            outputs = K.concatenate([inputs, xx_channels], axis=self.axis)
+            outputs = K.concatenate([inputs, xx_channels], axis=-1)
 
         if self.rank == 2:
             if self.data_format == 'channels_first':
@@ -121,7 +121,7 @@ class _CoordinateChannel(Layer):
             yy_channels = yy_channels / K.cast(dim2 - 1, K.floatx())
             yy_channels = (yy_channels * 2) - 1.
 
-            outputs = K.concatenate([inputs, xx_channels, yy_channels], axis=self.axis)
+            outputs = K.concatenate([inputs, xx_channels, yy_channels], axis=-1)
 
             if self.use_radius:
                 rr = K.sqrt(K.square(xx_channels - 0.5) +
@@ -190,7 +190,7 @@ class _CoordinateChannel(Layer):
             zz_channels = zz_channels * 2 - 1.
 
             outputs = K.concatenate([inputs, zz_channels, xx_channels, yy_channels],
-                                    axis=self.axis)
+                                    axis=-1)
 
             if self.data_format == 'channels_first':
                 outputs = K.permute_dimensions(outputs, [0, 4, 1, 2, 3])
