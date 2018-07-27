@@ -58,10 +58,12 @@ transpose operations are added to account for this change.
 
 This modification along with some transpose operations allows for height and width to be different and still work.
 
-#
+## Theano Support
+
+Theano is partially supported with the `coord_theano.py` script and using passing a static batch size to the Input layer.
 
 # Requirements
 
 - Keras 2.2.0+
-- Either Tensorflow or CNTK backend. Theano is partially supported with the coord_theano.py script and using passing a static batch shape to the Input layer.
+- Either Tensorflow or CNTK backend.
 - Matplotlib (to plot images only)
