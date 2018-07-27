@@ -6,6 +6,12 @@ from keras.utils.generic_utils import get_custom_objects
 class _CoordinateChannel(Layer):
     """ Adds Coordinate Channels to the input tensor.
 
+    Due to Theano backend limitations, it is required to pass a static batch
+    size when defining the input shape of the model.
+
+    Using the Input layer, this can be done by passing the `batch_shape`
+    argument.
+
     # Arguments
         rank: An integer, the rank of the input data-uniform,
             e.g. "2" for 2D convolution.
@@ -225,6 +231,12 @@ class _CoordinateChannel(Layer):
 class CoordinateChannel1D(_CoordinateChannel):
     """ Adds Coordinate Channels to the input tensor of rank 1.
 
+    Due to Theano backend limitations, it is required to pass a static batch
+    size when defining the input shape of the model.
+
+    Using the Input layer, this can be done by passing the `batch_shape`
+    argument.
+
     # Arguments
         data_format: A string,
             one of `"channels_last"` or `"channels_first"`.
@@ -263,6 +275,12 @@ class CoordinateChannel1D(_CoordinateChannel):
 
 class CoordinateChannel2D(_CoordinateChannel):
     """ Adds Coordinate Channels to the input tensor.
+
+    Due to Theano backend limitations, it is required to pass a static batch
+    size when defining the input shape of the model.
+
+    Using the Input layer, this can be done by passing the `batch_shape`
+    argument.
 
     # Arguments
         use_radius: Boolean flag to determine whether the
@@ -319,6 +337,12 @@ class CoordinateChannel2D(_CoordinateChannel):
 
 class CoordinateChannel3D(_CoordinateChannel):
     """ Adds Coordinate Channels to the input tensor.
+
+    Due to Theano backend limitations, it is required to pass a static batch
+    size when defining the input shape of the model.
+
+    Using the Input layer, this can be done by passing the `batch_shape`
+    argument.
 
     # Arguments
         rank: An integer, the rank of the input data-uniform,
