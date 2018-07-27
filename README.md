@@ -62,5 +62,5 @@ This modification along with some transpose operations allows for height and wid
 # Requirements
 
 - Keras 2.2.0+
-- Either Tensorflow, Theano or CNTK backend.
+- Either Tensorflow or CNTK backend. Theano is not supported since it cannot compute the batch size dynamically.
 - Matplotlib (to plot images only)
