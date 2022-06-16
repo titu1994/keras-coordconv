@@ -1,5 +1,6 @@
 from tensorflow.python.keras.layers import Layer, InputSpec
 from tensorflow.keras import backend as K
+import tensorflow as tf
 from tensorflow.keras.utils import get_custom_objects
 
 
@@ -93,7 +94,7 @@ class _CoordinateChannel(Layer):
             input_shape = [input_shape[i] for i in range(4)]
             batch_shape, dim1, dim2, channels = input_shape
 
-            xx_ones = K.ones(K.stack([batch_shape, dim2]), dtype='int32')
+            xx_ones = tf.ones(K.stack([batch_shape, dim2]), dtype='int32')
             xx_ones = K.expand_dims(xx_ones, axis=-1)
 
             xx_range = K.tile(K.expand_dims(K.arange(0, dim1), axis=0),
@@ -103,7 +104,7 @@ class _CoordinateChannel(Layer):
             xx_channels = K.expand_dims(xx_channels, axis=-1)
             xx_channels = K.permute_dimensions(xx_channels, [0, 2, 1, 3])
 
-            yy_ones = K.ones(K.stack([batch_shape, dim1]), dtype='int32')
+            yy_ones = tf.ones(K.stack([batch_shape, dim1]), dtype='int32')
             yy_ones = K.expand_dims(yy_ones, axis=1)
 
             yy_range = K.tile(K.expand_dims(K.arange(0, dim2), axis=0),
@@ -140,7 +141,7 @@ class _CoordinateChannel(Layer):
             input_shape = [input_shape[i] for i in range(5)]
             batch_shape, dim1, dim2, dim3, channels = input_shape
 
-            xx_ones = K.ones(K.stack([batch_shape, dim3]), dtype='int32')
+            xx_ones = tf.ones(K.stack([batch_shape, dim3]), dtype='int32')
             xx_ones = K.expand_dims(xx_ones, axis=-1)
 
             xx_range = K.tile(K.expand_dims(K.arange(0, dim2), axis=0),
@@ -155,7 +156,7 @@ class _CoordinateChannel(Layer):
             xx_channels = K.tile(xx_channels,
                                  [1, dim1, 1, 1, 1])
 
-            yy_ones = K.ones(K.stack([batch_shape, dim2]), dtype='int32')
+            yy_ones = tf.ones(K.stack([batch_shape, dim2]), dtype='int32')
             yy_ones = K.expand_dims(yy_ones, axis=1)
 
             yy_range = K.tile(K.expand_dims(K.arange(0, dim3), axis=0),
